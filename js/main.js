@@ -3,11 +3,13 @@ function hello(){
 }
 hello();
 
+const serviceWorkerPath = location.href.indexOf('github.io') > -1 ? './sw_cached_site.js' : '../sw_cached_site.js';
+
 if('serviceWorker' in navigator){
   console.log('serviceWorker is support');
 
   navigator.serviceWorker
-    .register('../sw_cached_site.js')
+    .register(serviceWorkerPath)
     .then(res => {
       console.log('service worker registed')
     })
