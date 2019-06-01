@@ -1,0 +1,33 @@
+body {
+}
+
+.article-list {
+}
+
+.article-list > li {
+  color: #555;
+}
+
+.ball {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+  background-color: red;
+  border-radius: 50%;
+  animation: tik 1s ease-in-out infinite alternate;
+}
+
+.red {
+  color: red;
+}
+
+@keyframes tik {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(300px);
+  }
+}

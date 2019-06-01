@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>service worker example</title>
+  <link href="css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <h2>Home page </h2>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./about.html">About</a></li>
+    </ul>
+    <div class="root">
+      <b class="red">网站只要打开一次，把网络关掉依然可以正常访问</b>
+      <ul class="article-list">
+
+      </ul>
+    </div>
+  <script src="js/main.js"></script>
+  <script src="https://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+  <script>
+    $.ajax({
+      dataType: 'json',
+      url:'https://testapi.liaolunling.top/api/blog/articles',
+      success: function(articleRes){
+        console.log('文章列表', articleRes.data);
+        const $articleList = $('.article-list');
+        let list = '';
+        articleRes.data.forEach(article => {
+          list += `<li>${article.title}</li>`
+        });
+        $articleList.append(list);
+      }
+    })
+  </script>
+</body>
+</html>
