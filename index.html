@@ -15,8 +15,11 @@
     </ul>
     <div class="root">
       <b class="red">网站只要打开一次，把网络关掉依然可以正常访问</b>
-      <ul class="article-list">
-
+      <ul class="article-list loading">
+        <div class="loading-box">
+          <div class="loading-icon"></div>
+          <div class="text">加载文章列表...</div>
+        </div>
       </ul>
     </div>
   <script src="js/main.js"></script>
@@ -28,11 +31,12 @@
       success: function(articleRes){
         console.log('文章列表', articleRes.data);
         const $articleList = $('.article-list');
+        $articleList.removeClass('loading');
         let list = '';
         articleRes.data.forEach(article => {
           list += `<li>${article.title}</li>`
         });
-        $articleList.append(list);
+        $articleList.html(list);
       }
     })
   </script>
